@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+
+input, select, optgroup, textarea{
+    background-color: #0000008f !important;
+}
+
+.p-error{
+    color: rgba(255, 0, 0, 0.692);
+}

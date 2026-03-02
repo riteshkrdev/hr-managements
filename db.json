@@ -1,0 +1,202 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@company.com",
+      "department": "IT",
+      "salary": 75000,
+      "active": true
+    },
+    {
+      "id": "2",
+      "firstName": "Emma",
+      "lastName": "Johnson",
+      "email": "emma.johnson@company.com",
+      "department": "HR",
+      "salary": 62000,
+      "active": true
+    },
+    {
+      "id": "3",
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "email": "michael.brown@company.com",
+      "department": "Finance",
+      "salary": 80000,
+      "active": true
+    },
+    {
+      "id": "4",
+      "firstName": "Sophia",
+      "lastName": "Davis",
+      "email": "sophia.davis@company.com",
+      "department": "Marketing",
+      "salary": 67000,
+      "active": false
+    },
+    {
+      "id": "5",
+      "firstName": "James",
+      "lastName": "Wilson",
+      "email": "james.wilson@company.com",
+      "department": "Sales",
+      "salary": 65000,
+      "active": true
+    },
+    {
+      "id": "6",
+      "firstName": "Olivia",
+      "lastName": "Martinez",
+      "email": "olivia.martinez@company.com",
+      "department": "IT",
+      "salary": 72000,
+      "active": true
+    },
+    {
+      "id": "7",
+      "firstName": "William",
+      "lastName": "Anderson",
+      "email": "william.anderson@company.com",
+      "department": "Operations",
+      "salary": 69000,
+      "active": true
+    },
+    {
+      "id": "8",
+      "firstName": "Ava",
+      "lastName": "Thomas",
+      "email": "ava.thomas@company.com",
+      "department": "Support",
+      "salary": 58000,
+      "active": false
+    },
+    {
+      "id": "9",
+      "firstName": "Benjamin",
+      "lastName": "Taylor",
+      "email": "benjamin.taylor@company.com",
+      "department": "Finance",
+      "salary": 83000,
+      "active": true
+    },
+    {
+      "id": "10",
+      "firstName": "Isabella",
+      "lastName": "Moore",
+      "email": "isabella.moore@company.com",
+      "department": "HR",
+      "salary": 61000,
+      "active": true
+    },
+    {
+      "id": "11",
+      "firstName": "David",
+      "lastName": "Thomas",
+      "email": "david.thomas@company.com",
+      "department": "Finance",
+      "salary": 75000,
+      "active": true
+    },
+    {
+      "id": "12",
+      "firstName": "Isabella",
+      "lastName": "Taylor",
+      "email": "isabella.taylor@company.com",
+      "department": "Finance",
+      "salary": 74000,
+      "active": false
+    },
+    {
+      "id": "13",
+      "firstName": "Richard",
+      "lastName": "Moore",
+      "email": "richard.moore@company.com",
+      "department": "IT",
+      "salary": 69000,
+      "active": true
+    },
+    {
+      "id": "14",
+      "firstName": "Charlotte",
+      "lastName": "Jackson",
+      "email": "charlotte.jackson@company.com",
+      "department": "HR",
+      "salary": 53000,
+      "active": true
+    },
+    {
+      "id": "15",
+      "firstName": "Joseph",
+      "lastName": "White",
+      "email": "joseph.white@company.com",
+      "department": "Sales",
+      "salary": 61000,
+      "active": true
+    },
+    {
+      "id": "16",
+      "firstName": "Amelia",
+      "lastName": "Harris",
+      "email": "amelia.harris@company.com",
+      "department": "Marketing",
+      "salary": 51000,
+      "active": true
+    },
+    {
+      "id": "17",
+      "firstName": "Thomas",
+      "lastName": "Martin",
+      "email": "thomas.martin@company.com",
+      "department": "Operations",
+      "salary": 59000,
+      "active": true
+    },
+    {
+      "id": "18",
+      "firstName": "Mia",
+      "lastName": "Thompson",
+      "email": "mia.thompson@company.com",
+      "department": "Finance",
+      "salary": 77000,
+      "active": true
+    },
+    {
+      "id": "19",
+      "firstName": "Christopher",
+      "lastName": "Garcia",
+      "email": "christopher.garcia@company.com",
+      "department": "IT",
+      "salary": 85000,
+      "active": true
+    },
+    {
+      "id": "20",
+      "firstName": "Evelyn",
+      "lastName": "Clark",
+      "email": "evelyn.clark@company.com",
+      "department": "Sales",
+      "salary": 62500,
+      "active": false
+    },
+    {
+      "id": "21",
+      "firstName": "Ritesh",
+      "lastName": "Kumar",
+      "email": "ritesh.kumar1@company.com",
+      "department": "IT",
+      "salary": 50000,
+      "active": true
+    },
+    {
+      "id": "22",
+      "firstName": "Ritesh",
+      "lastName": "Kumar",
+      "email": "ritesh.kumar2@company.com",
+      "department": "IT",
+      "salary": 20000,
+      "active": true
+    }
+  ]
+}

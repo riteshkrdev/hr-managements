@@ -1,0 +1,183 @@
+<div class="employee-page">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h2 class="page-title">Employees</h2>
+            <p class="page-subtitle">
+                Manage employee records, departments and status.
+            </p>
+        </div>
+
+        <div>
+            <button pButton label="Add Employee" icon="pi pi-plus" class="p-button-sm" (click)="addNewEmployee()">
+            </button>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="section-divider" />
+
+    <!-- Table -->
+    <p-table [value]="employees" [paginator]="true" [loading]="loading" [rows]="10" [rowsPerPageOptions]="[5,10,20]"
+        styleClass="p-datatable-striped employee-table">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Status</th>
+                <th style="width:180px">Actions</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-employee>
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.salary | currency }}</td>
+                <td>
+                    <p-tag [value]="employee.active ? 'Active' : 'Inactive'"
+                        [severity]="employee.active ? 'success' : 'danger'">
+                    </p-tag>
+                </td>
+                <td>
+                    <button pButton icon="pi pi-pencil" class="p-button-text p-button-sm"
+                        (click)="editEmployee(employee)">Edit</button>
+                    <button pButton icon="pi pi-trash" class="p-button-text p-button-sm p-button-danger"
+                        (click)="delete(employee.id)">Delete</button>
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+</div>
+
+<p-dialog [(visible)]="displayDialog" [modal]="true" [closable]="true" [style]="{ width: '650px' }"
+    (onHide)="onDialogClose()" [draggable]="false" [resizable]="false" [breakpoints]="{ '960px': '95vw' }"
+    styleClass="employee-dialog">
+
+    <!-- Custom Header -->
+    <ng-template pTemplate="header">
+        <div class="dialog-header">
+            <div>
+                <h4 class="dialog-title">
+                    {{ isEdit ? 'Edit Employee' : 'Add Employee' }}
+                </h4>
+                <span class="dialog-subtitle">
+                    {{ isEdit ? 'Update employee information' : 'Enter employee details' }}
+                </span>
+            </div>
+        </div>
+    </ng-template>
+
+    <form [formGroup]="employeeForm" class="p-fluid employee-form">
+
+        <!-- Personal Section -->
+        <div class="form-section">
+            <h5 class="section-title">Personal Information</h5>
+
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="firstName">First Name</label>
+                    <input id="firstName" type="text" pInputText formControlName="firstName" name="firstName" />
+                    @if(employeeForm.get('firstName')?.invalid
+                    && employeeForm.get('firstName')?.touched){<small class="p-error">
+                        First name is required
+                    </small>}
+                </div>
+
+                <div class="form-field">
+                    <label for="lastName">Last Name</label>
+                    <input id="lastName" type="text" pInputText formControlName="lastName" name="lastName" />
+                    @if(employeeForm.get('lastName')?.invalid
+                    && employeeForm.get('lastName')?.touched){<small class="p-error">
+                        Last name is required
+                    </small>}
+                </div>
+            </div>
+
+            <div class="form-field full-width">
+                <label for="email">Email</label>
+                <input id="email" type="email" pInputText formControlName="email" name="email" />
+                @if(employeeForm.get('email')?.hasError('required')
+                && employeeForm.get('email')?.touched){
+                <small class="p-error">
+                    Email is required
+                </small>
+                }
+
+                @if(employeeForm.get('email')?.hasError('email')
+                && !employeeForm.get('email')?.hasError('required')
+                && employeeForm.get('email')?.touched){
+                <small class="p-error">
+                    Email is invalid
+                </small>
+                }
+            </div>
+        </div>
+
+        <!-- Job Section -->
+        <div class="form-section">
+            <h5 class="section-title">Job Information</h5>
+
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="department">Department</label>
+                    <input id="department" type="text" pInputText formControlName="department" name="department" />
+                    @if(employeeForm.get('department')?.hasError('required')
+                    && employeeForm.get('department')?.touched){
+                    <small class="p-error">
+                        Salary is required
+                    </small>
+                    }
+                </div>
+
+                <div class="form-field">
+                    <label for="salary">Salary</label>
+                    <input id="salary" type="number" pInputText formControlName="salary" name="salary" />
+                    @if(employeeForm.get('salary')?.hasError('required')
+                    && employeeForm.get('salary')?.touched){
+                    <small class="p-error">
+                        Salary is required
+                    </small>
+                    }
+
+                    @if(employeeForm.get('salary')?.hasError('min')
+                    && !employeeForm.get('salary')?.hasError('required')
+                    && employeeForm.get('salary')?.touched){
+                    <small class="p-error">
+                        Salary must be greater than 0
+                    </small>
+                    }
+                </div>
+            </div>
+
+            <div class="checkbox-wrapper">
+                <p-checkbox formControlName="active" name="active" binary="true" inputId="active">
+                </p-checkbox>
+                <label for="active">Active Employee</label>
+            </div>
+        </div>
+
+    </form>
+
+    <!-- Footer -->
+    <ng-template pTemplate="footer">
+        <div class="dialog-footer">
+            <button pButton label="Cancel" icon="pi pi-times" class="p-button-text" (click)="displayDialog = false">
+            </button>
+
+            <button pButton [label]="isEdit ? 'Update Employee' : 'Create Employee'" icon="pi pi-check"
+                [disabled]="employeeForm.invalid" (click)="onSaveEmployee()">
+            </button>
+        </div>
+    </ng-template>
+
+</p-dialog>
