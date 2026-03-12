@@ -1,0 +1,44 @@
+.project-page {
+    padding: 1.5rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.page-title {
+    margin: 0;
+    font-weight: 600;
+}
+
+.page-subtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.section-divider {
+    margin: 1rem 0 1.5rem 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+.project-table {
+    width: 100%;
+}
+
+.id-cell {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.loading-state {
+    padding: 1rem;
+    text-align: center;
+    color: #6b7280;
+}

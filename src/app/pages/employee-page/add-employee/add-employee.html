@@ -1,0 +1,114 @@
+
+<div class="employee-dialog">
+
+
+  <div class="dialog-header">
+
+  <h2 mat-dialog-title>
+    {{ isEdit ? 'Edit Employee' : 'Add Employee' }}
+  </h2>
+
+  <button mat-icon-button class="close-btn" (click)="onDialogClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</div>
+
+  <mat-dialog-content>
+
+    <form [formGroup]="employeeForm" class="employee-form">
+
+      <!-- Personal -->
+      <h3 class="section-title">Personal Information</h3>
+
+      <div class="form-grid">
+
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+          @if(employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid){<mat-error>
+            First name is required
+          </mat-error>}
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+           @if(employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid){<mat-error >
+            Last name is required
+          </mat-error>}
+        </mat-form-field>
+
+      </div>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+
+        @if(employeeForm.get('email')?.hasError('required')){<mat-error >
+          Email is required
+        </mat-error>}
+
+        @if(employeeForm.get('email')?.hasError('email')){<mat-error >
+          Email is invalid
+        </mat-error>}
+      </mat-form-field>
+
+
+      <!-- Job -->
+       <h3 class="section-title">Job Information</h3>
+
+      <div class="form-grid">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Department</mat-label>
+          <input matInput formControlName="department">
+
+          @if(employeeForm.get('department')?.invalid){<mat-error >
+            Department is required
+          </mat-error>}
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Salary</mat-label>
+          <input matInput type="number" formControlName="salary">
+
+          @if(employeeForm.get('salary')?.hasError('required')){<mat-error>
+            Salary is required
+          </mat-error>}
+
+          @if(employeeForm.get('salary')?.hasError('min')){<mat-error>
+            Salary must be greater than 0
+          </mat-error>}
+
+        </mat-form-field>
+
+      </div>
+
+      <mat-checkbox formControlName="active">
+        Active Employee
+      </mat-checkbox>
+
+    </form>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+
+    <button mat-button (click)="onDialogClose()">
+      Cancel
+    </button>
+
+    <button mat-raised-button color="primary"
+       [disabled]="employeeForm.invalid"
+      (click)="onSaveEmployee()"
+     >
+     <!--  -->
+
+      {{ isEdit ? 'Update Employee' : 'Create Employee' }}
+
+    </button>
+
+  </mat-dialog-actions>
+  </div>

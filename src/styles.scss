@@ -1,0 +1,31 @@
+// All @use declarations MUST be at the top before any rules
+@use '@angular/material' as mat;
+@use 'assets/scss/variables' as *;
+@use 'sass:map';
+@use './app/@theme/styles/theme-palette-colors' as colors;
+@use './app/@theme/styles/theme' as themes;
+@use 'assets/scss/generic' as *;
+@use 'assets/scss/common' as *;
+@use './app/@theme/styles/layouts/menu' as *;
+@use './app/@theme/styles/pages/dashboard' as *;
+@use './app/@theme/styles/grid' as *;
+@use './app/@theme/styles/toast-color' as *;
+
+// Angular Material setup
+@include mat.core();
+
+// theme setup
+@include mat.all-component-typographies(themes.theme-typography("'Inter var', sans-serif")); // theme typography
+
+// default theme
+@include mat.all-component-themes(themes.get-light-theme(colors.$blue-theme));
+
+// generate non material classes based on theme
+.blue-theme {
+  @include themes.generate-theme-classes(colors.$blue-theme);
+}
+
+.p-toast-message {
+  background: rgba(0, 0, 0, 0) !important;
+  backdrop-filter: blur(6px);
+}

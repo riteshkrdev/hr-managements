@@ -1,0 +1,81 @@
+<div class="department-page">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div>
+      <p class="page-subtitle">Manage departments, assigned managers and headcount.</p>
+    </div>
+    <div>
+      <button class="bg-blue-900" mat-raised-button color="primary" (click)="addNewDepartment()">
+        <mat-icon>add</mat-icon>
+        Add Department
+      </button>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-state">Loading departments...</div>
+
+  <!-- Table -->
+  <table mat-table [dataSource]="departments" class="mat-elevation-z2 department-table">
+
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef style="max-width:100px">ID</th>
+      <td mat-cell *matCellDef="let dept" class="id-cell">{{ dept.id }}</td>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Department Name</th>
+      <td mat-cell *matCellDef="let dept">{{ dept.name }}</td>
+    </ng-container>
+
+    <!-- Manager -->
+    <ng-container matColumnDef="manager">
+      <th mat-header-cell *matHeaderCellDef>Manager</th>
+      <td mat-cell *matCellDef="let dept">{{ dept.manager }}</td>
+    </ng-container>
+
+    <!-- Headcount -->
+    <ng-container matColumnDef="headcount">
+      <th mat-header-cell *matHeaderCellDef>Headcount</th>
+      <td mat-cell *matCellDef="let dept">{{ dept.headcount }}</td>
+    </ng-container>
+
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let dept">
+        <mat-chip [color]="dept.active ? 'primary' : 'warn'" selected>
+          {{ dept.active ? 'Active' : 'Inactive' }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef style="width:180px">Actions</th>
+      <td mat-cell *matCellDef="let dept">
+        <button mat-icon-button color="primary" (click)="editDepartment(dept)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(dept.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons>
+  </mat-paginator>
+
+</div>

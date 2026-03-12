@@ -17,7 +17,7 @@ npm install
 3. Run project
 
 ```
-npm start or ng server
+npm start
 ```
 
 

@@ -5,7 +5,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { ToastService } from '../service/toast.service';
+import { ToastService } from '../services/toast.service';
 
 export const toastInterceptor: HttpInterceptorFn = (req, next) => {
 
@@ -16,7 +16,7 @@ export const toastInterceptor: HttpInterceptorFn = (req, next) => {
       next: (event) => {
 
         if (event instanceof HttpResponse &&
-            ['GET','POST', 'PUT', 'DELETE'].includes(req.method)) {
+          ['GET', 'POST', 'PUT', 'DELETE'].includes(req.method)) {
 
           switch (req.method) {
             case 'GET':
@@ -36,7 +36,6 @@ export const toastInterceptor: HttpInterceptorFn = (req, next) => {
       },
       error: (error: HttpErrorResponse) => {
         notification.error(
-          'Request Failed',
           error.error?.message || error.message
         );
       }
